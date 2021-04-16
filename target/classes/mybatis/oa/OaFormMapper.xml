@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bootdo.oaForm.dao.OaFormMapper">
+  <resultMap id="BaseResultMap" type="com.bootdo.oaForm.domain.OaForm">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="wLastName" jdbcType="VARCHAR" property="wlastname" />
+    <result column="wFirstName" jdbcType="VARCHAR" property="wfirstname" />
+    <result column="SIN" jdbcType="BIGINT" property="sin" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="wAddress" jdbcType="VARCHAR" property="waddress" />
+    <result column="wCity" jdbcType="VARCHAR" property="wcity" />
+    <result column="wProvince" jdbcType="VARCHAR" property="wprovince" />
+    <result column="wPostal" jdbcType="VARCHAR" property="wpostal" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="birth" jdbcType="VARCHAR" property="birth" />
+    <result column="sex" jdbcType="BIGINT" property="sex" />
+    <result column="monetLost" jdbcType="DOUBLE" property="monetlost" />
+    <result column="eName" jdbcType="VARCHAR" property="ename" />
+    <result column="eTelephone" jdbcType="VARCHAR" property="etelephone" />
+    <result column="eAddress" jdbcType="VARCHAR" property="eaddress" />
+    <result column="eCity" jdbcType="VARCHAR" property="ecity" />
+    <result column="eProvince" jdbcType="VARCHAR" property="eprovince" />
+    <result column="ePostal" jdbcType="VARCHAR" property="epostal" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="del_flag" jdbcType="CHAR" property="delFlag" />
+    <result column="doctor_name" jdbcType="VARCHAR" property="doctor_name" />
+    <result column="doctor_address" jdbcType="VARCHAR" property="doctor_address" />
+    <result column="doctor_city" jdbcType="VARCHAR" property="doctor_city" />
+    <result column="doctor_province" jdbcType="VARCHAR" property="doctor_province" />
+    <result column="doctor_code" jdbcType="VARCHAR" property="doctor_code" />
+    <result column="user_id" jdbcType="BIGINT" property="user_id" />
+    <result column="is_version" jdbcType="INTEGER" property="is_version" />
+    <result column="is_color" jdbcType="INTEGER" property="is_color" />
+    <result column="is_hearing" jdbcType="INTEGER" property="is_hearing" />
+    <result column="is_body" jdbcType="INTEGER" property="is_body" />
+    <result column="is_limb" jdbcType="INTEGER" property="is_limb" />
+    <result column="is_strength" jdbcType="INTEGER" property="is_strength" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, wLastName, wFirstName, SIN, telephone, wAddress, wCity, wProvince, wPostal, job, 
+    birth, sex, monetLost, eName, eTelephone, eAddress, eCity, eProvince, ePostal,status, remarks, del_flag,
+    doctor_name,doctor_address,doctor_city,doctor_province,doctor_code,user_id,is_version,
+    is_color,is_hearing,is_body,is_limb,is_strength
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_form
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <select id="selectOaFormByMap" parameterType="java.util.Map" resultType="com.bootdo.oaForm.domain.OaForm">
+    select
+    <include refid="Base_Column_List" />
+    from oa_form
+    <if test="user_id!=null">
+      where user_id=#{user_id}
+    </if>
+    <if test="doctor_name!=null and user_id!=null ">
+      and doctor_name=#{doctor_name}
+    </if>
+    <if test="doctor_name!=null and user_id==null ">
+      where doctor_name=#{doctor_name}
+    </if>
+    <if test="(user_id!=null or doctor_name!=null ) and name!=null and name!=''">
+      and (
+      wCity like #{name} or wProvince like #{name}
+      or doctor_name like #{name}
+      or doctor_address like #{name}
+      )
+    </if>
+
+    <if test="(user_id==null and doctor_name==null ) and name!=null and name!=''">
+      where (
+      wCity like #{name} or wProvince like #{name}
+      or doctor_name like #{name}
+      or doctor_address like #{name}
+      )
+    </if>
+
+    order by id desc
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_form
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bootdo.oaForm.domain.OaForm">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_form (wLastName, wFirstName, SIN, 
+      telephone, wAddress, wCity, 
+      wProvince, wPostal, job, 
+      birth, sex, monetLost, 
+      eName, eTelephone, eAddress, 
+      eCity, eProvince, ePostal,
+      status, remarks, del_flag
+      )
+    values (#{wlastname,jdbcType=VARCHAR}, #{wfirstname,jdbcType=VARCHAR}, #{sin,jdbcType=BIGINT}, 
+      #{telephone,jdbcType=VARCHAR}, #{waddress,jdbcType=VARCHAR}, #{wcity,jdbcType=VARCHAR}, 
+      #{wprovince,jdbcType=VARCHAR}, #{wpostal,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{birth,jdbcType=VARCHAR}, #{sex,jdbcType=BIGINT}, #{monetlost,jdbcType=DOUBLE}, 
+      #{ename,jdbcType=VARCHAR}, #{etelephone,jdbcType=VARCHAR}, #{eaddress,jdbcType=VARCHAR}, 
+      #{ecity,jdbcType=VARCHAR}, #{eprovince,jdbcType=VARCHAR}, #{epostal,jdbcType=VARCHAR},
+      #{status,jdbcType=INTEGER}, #{remarks,jdbcType=VARCHAR}, #{delFlag,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bootdo.oaForm.domain.OaForm">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_form
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="wlastname != null">
+        wLastName,
+      </if>
+      <if test="wfirstname != null">
+        wFirstName,
+      </if>
+      <if test="sin != null">
+        SIN,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="waddress != null">
+        wAddress,
+      </if>
+      <if test="wcity != null">
+        wCity,
+      </if>
+      <if test="wprovince != null">
+        wProvince,
+      </if>
+      <if test="wpostal != null">
+        wPostal,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="birth != null">
+        birth,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="monetlost != null">
+        monetLost,
+      </if>
+      <if test="ename != null">
+        eName,
+      </if>
+      <if test="etelephone != null">
+        eTelephone,
+      </if>
+      <if test="eaddress != null">
+        eAddress,
+      </if>
+      <if test="ecity != null">
+        eCity,
+      </if>
+      <if test="eprovince != null">
+        eProvince,
+      </if>
+      <if test="epostal != null">
+        ePostal,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="doctor_name != null">
+        doctor_name,
+      </if>
+      <if test="doctor_address != null">
+        doctor_address,
+      </if>
+      <if test="doctor_city != null">
+        doctor_city,
+      </if>
+      <if test="doctor_province != null">
+        doctor_province,
+      </if>
+      <if test="doctor_code != null">
+        doctor_code,
+      </if>
+      <if test="user_id != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="wlastname != null">
+        #{wlastname,jdbcType=VARCHAR},
+      </if>
+      <if test="wfirstname != null">
+        #{wfirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="sin != null">
+        #{sin,jdbcType=BIGINT},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="waddress != null">
+        #{waddress,jdbcType=VARCHAR},
+      </if>
+      <if test="wcity != null">
+        #{wcity,jdbcType=VARCHAR},
+      </if>
+      <if test="wprovince != null">
+        #{wprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="wpostal != null">
+        #{wpostal,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=BIGINT},
+      </if>
+      <if test="monetlost != null">
+        #{monetlost,jdbcType=DOUBLE},
+      </if>
+      <if test="ename != null">
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="etelephone != null">
+        #{etelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="eaddress != null">
+        #{eaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ecity != null">
+        #{ecity,jdbcType=VARCHAR},
+      </if>
+      <if test="eprovince != null">
+        #{eprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="epostal != null">
+        #{epostal,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="doctor_name != null">
+        #{doctor_name,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_address != null">
+        #{doctor_address,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_city != null">
+        #{doctor_city,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_province != null">
+        #{doctor_province,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_code != null">
+        #{doctor_code,jdbcType=VARCHAR},
+      </if>
+      <if test="user_id != null">
+        #{user_id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bootdo.oaForm.domain.OaForm">
+    update oa_form
+    <set>
+      <if test="wlastname != null">
+        wLastName = #{wlastname,jdbcType=VARCHAR},
+      </if>
+      <if test="wfirstname != null">
+        wFirstName = #{wfirstname,jdbcType=VARCHAR},
+      </if>
+      <if test="sin != null">
+        SIN = #{sin,jdbcType=BIGINT},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="waddress != null">
+        wAddress = #{waddress,jdbcType=VARCHAR},
+      </if>
+      <if test="wcity != null">
+        wCity = #{wcity,jdbcType=VARCHAR},
+      </if>
+      <if test="wprovince != null">
+        wProvince = #{wprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="wpostal != null">
+        wPostal = #{wpostal,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="birth != null">
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=BIGINT},
+      </if>
+      <if test="monetlost != null">
+        monetLost = #{monetlost,jdbcType=DOUBLE},
+      </if>
+      <if test="ename != null">
+        eName = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="etelephone != null">
+        eTelephone = #{etelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="eaddress != null">
+        eAddress = #{eaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="ecity != null">
+        eCity = #{ecity,jdbcType=VARCHAR},
+      </if>
+      <if test="eprovince != null">
+        eProvince = #{eprovince,jdbcType=VARCHAR},
+      </if>
+      <if test="epostal != null">
+        ePostal = #{epostal,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=CHAR},
+      </if>
+      <if test="doctor_name != null">
+        doctor_name=#{doctor_name,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_address != null">
+        doctor_address=#{doctor_address,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_city != null">
+        doctor_city=#{doctor_city,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_province != null">
+        doctor_province= #{doctor_province,jdbcType=VARCHAR},
+      </if>
+      <if test="doctor_code != null">
+        doctor_code= #{doctor_code,jdbcType=VARCHAR},
+      </if>
+      <if test="is_use != null">
+        is_use= #{is_use,jdbcType=INTEGER},
+      </if>
+      <if test="is_version != null">
+        is_version= #{is_version,jdbcType=INTEGER},
+      </if>
+      <if test="is_color != null">
+        is_color= #{is_color,jdbcType=INTEGER},
+      </if>
+      <if test="is_hearing != null">
+        is_hearing= #{is_hearing,jdbcType=INTEGER},
+      </if>
+      <if test="is_body != null">
+        is_body= #{is_body,jdbcType=INTEGER},
+      </if>
+      <if test="is_limb != null">
+        is_limb= #{is_limb,jdbcType=INTEGER},
+      </if>
+      <if test="is_strength != null">
+        is_strength= #{is_strength,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bootdo.oaForm.domain.OaForm">
+    update oa_form
+    set wLastName = #{wlastname,jdbcType=VARCHAR},
+      wFirstName = #{wfirstname,jdbcType=VARCHAR},
+      SIN = #{sin,jdbcType=BIGINT},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      wAddress = #{waddress,jdbcType=VARCHAR},
+      wCity = #{wcity,jdbcType=VARCHAR},
+      wProvince = #{wprovince,jdbcType=VARCHAR},
+      wPostal = #{wpostal,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      birth = #{birth,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIGINT},
+      monetLost = #{monetlost,jdbcType=DOUBLE},
+      eName = #{ename,jdbcType=VARCHAR},
+      eTelephone = #{etelephone,jdbcType=VARCHAR},
+      eAddress = #{eaddress,jdbcType=VARCHAR},
+      eCity = #{ecity,jdbcType=VARCHAR},
+      eProvince = #{eprovince,jdbcType=VARCHAR},
+      ePostal = #{epostal,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      del_flag = #{delFlag,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

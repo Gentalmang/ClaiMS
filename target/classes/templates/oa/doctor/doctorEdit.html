@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content " id="app">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm">
+                        <input id="id" name="id"
+                               th:value="${form.id}" class="form-control" type="hidden">
+                        <h2>Worker information</h2>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Last name：</label>
+                            <div class="col-sm-8">
+                                <input id="wLastName" name="wLastName"
+                                       th:value="${form.wlastname}" class="form-control" readonly type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">First name：</label>
+                            <div class="col-sm-8">
+                                <input id="wFirstName" name="wFirstName"
+                                       th:value="${form.wfirstname}" class="form-control" readonly type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Sex：</label>
+                            <div class="col-sm-8">
+                                <input id="sex" name="sex"
+                                       th:value="${form.sex}" class="form-control" readonly type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Social Insurance Number：</label>
+                            <div class="col-sm-8">
+                                <input id="SIN" name="SIN"
+                                       th:value="${form.sin}" readonly class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Telephone：</label>
+                            <div class="col-sm-8">
+                                <input id="telephone" name="telephone"
+                                       th:value="${form.telephone}"  readonly class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Address(number, street, apt., suite, unit)：</label>
+                            <div class="col-sm-8">
+                                <input id="wAddress" name="wAddress"
+                                       th:value="${form.waddress}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">City/Town：</label>
+                            <div class="col-sm-8">
+                                <input id="wCity" name="wCity"
+                                       th:value="${form.wcity}"  readonly class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Province：</label>
+                            <div class="col-sm-8">
+                                <input id="wProvince" name="wProvince"
+                                       th:value="${form.wprovince}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Postal code：</label>
+                            <div class="col-sm-8">
+                                <input id="wPostal" name="wPostal"
+                                       th:value="${form.wpostal}"  readonly class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Job tittle (at the time you were hurt)：</label>
+                            <div class="col-sm-8">
+                                <input id="job" name="job"
+                                       th:value="${form.job}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Birthday(YYYYMMDD)：</label>
+                            <div class="col-sm-8">
+                                <input id="birth" name="birth"
+                                       th:value="${form.birth}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Money lost：</label>
+                            <div class="col-sm-8">
+                                <input id="moneyLost" name="moneyLost"
+                                       th:value="${form.monetlost}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <h2>Employer information</h2>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Company/Employer name：</label>
+                            <div class="col-sm-8">
+                                <input id="eName" name="eName"
+                                       th:value="${form.ename}"  readonly class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Company telephone：</label>
+                            <div class="col-sm-8">
+                                <input id="eTelephone" name="eTelephone"
+                                       th:value="${form.etelephone}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Address(number, street, apt., suite, unit)：</label>
+                            <div class="col-sm-8">
+                                <input id="eAddress" name="eAddress"
+                                       th:value="${form.eaddress}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">City/Town：</label>
+                            <div class="col-sm-8">
+                                <input id="eCity" name="eCity"
+                                       th:value="${form.ecity}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Province：</label>
+                            <div class="col-sm-8">
+                                <input id="eProvince" name="eProvince"
+                                       th:value="${form.eprovince}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Postal code：</label>
+                            <div class="col-sm-8">
+                                <input id="ePostal" name="ePostal"
+                                       th:value="${form.epostal}" readonly  class="form-control" type="text">
+                            </div>
+                        </div>
+                        <h2>Patient's current situation</h2>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Vision：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input id="version" readonly
+                                           th:value="${set.version}" class="form-control" type="text"/>
+                                    <input name="is_version" id="is_version" th:value="${form.is_version}"
+                                           class="form-control" type="hidden">
+                                    <span class="input-group-addon" id="is_version">
+                                        <!--<input name="is_version" th:checked="${form.is_version == 1} ? true : false" type="radio" value="1">
+   										<input name="is_version" th:checked="${form.is_version == 0} ? true : false" type="radio" value="0">-->
+                                        <input type="checkbox" id="check_version" readonly
+                                               onclick="changeVersion()"   th:checked="${form.is_version}eq 1 " style="zoom: 150%"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Color discrimination：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input id="color" readonly
+                                           th:value="${set.color}" class="form-control"  type="text">
+                                    <input name="is_color" id="is_color" th:value="${form.is_color}"
+                                           class="form-control" type="hidden">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" id="check_color"
+                                          onclick="changeColor()"     th:checked="${form.is_color}eq 1 " style="zoom: 150%" />
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Hearing：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input id="hearing" readonly
+                                           th:value="${set.hearing}" class="form-control"  type="text">
+                                    <input name="is_hearing" id="is_hearing" th:value="${form.is_hearing}"
+                                           class="form-control" type="hidden">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" id="check_hearing"
+                                          onclick="changeHearing()"  th:checked="${form.is_hearing}eq 1 "  style="zoom: 150%"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Body position：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input id="body" readonly
+                                           th:value="${set.body}" class="form-control"  type="text">
+                                    <input name="is_body" id="is_body" th:value="${form.is_body}"
+                                           class="form-control" type="hidden">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" id="check_body"
+                                            onclick="changeBody()"   th:checked="${form.is_body}eq 1 "   style="zoom: 150%"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Limb co-coordination：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input id="limb"  readonly
+                                           th:value="${set.limb}" class="form-control"  type="text">
+                                    <input name="is_limb" id="is_limb" th:value="${form.is_limb}"
+                                           class="form-control" type="hidden">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" id="check_limb"
+                                            onclick="changeLimb()"  th:checked="${form.is_limb}eq 1 "   style="zoom: 150%"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Strength：</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <input id="strength" readonly
+                                           th:value="${set.strength}" class="form-control"  type="text">
+                                    <input name="is_strength" id="is_strength" th:value="${form.is_strength}"
+                                           class="form-control" type="hidden">
+                                    <span class="input-group-addon">
+                                        <input type="checkbox" id="check_strength"
+                                           onclick="changeStrength()"  th:checked="${form.is_strength}eq 1 " style="zoom: 150%"/>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <h2>Other</h2>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">Remark：</label>
+                            <div class="col-sm-8">
+                                <input id="remarks" name="remarks"
+                                       th:value="${form.remarks}" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:include="include::footer"></div>
+
+<script type="text/javascript">
+
+    function changeVersion() {
+        var checked=$("#check_version").is(':checked')
+        if(checked==true){
+            $("#is_version").val(1);
+        }else{
+            $("#is_version").val(0);
+        }
+    }
+
+    function changeColor() {
+        var checked=$("#check_color").is(':checked')
+        if(checked==true){
+            $("#is_color").val(1);
+        }else{
+            $("#is_color").val(0);
+        }
+    }
+
+    function changeHearing() {
+        var checked=$("#check_hearing").is(':checked')
+        if(checked==true){
+            $("#is_hearing").val(1);
+        }else{
+            $("#is_hearing").val(0);
+        }
+    }
+
+    function changeBody() {
+        var checked=$("#check_body").is(':checked')
+        if(checked==true){
+            $("#is_body").val(1);
+        }else{
+            $("#is_body").val(0);
+        }
+    }
+
+    function changeLimb() {
+        var checked=$("#check_limb").is(':checked')
+        if(checked==true){
+            $("#is_limb").val(1);
+        }else{
+            $("#is_limb").val(0);
+        }
+    }
+
+    function changeStrength() {
+        var checked=$("#check_strength").is(':checked')
+        if(checked==true){
+            $("#is_strength").val(1);
+        }else{
+            $("#is_strength").val(0);
+        }
+    }
+
+</script>
+<script type="text/javascript" src="/js/appjs/oa/doctor/doctorEdit.js">
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<h2>Worker information</h2>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Last name：</label>
+								<div class="col-sm-8">
+									<input id="wLastName" name="wLastName"
+										   th:value="${form.wLastName}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">First name：</label>
+								<div class="col-sm-8">
+									<input id="wFirstName" name="wFirstName"
+										   th:value="${form.wFirstName}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Social Insurance Number：</label>
+								<div class="col-sm-8">
+									<input id="SIN" name="SIN"
+										   th:value="${form.SIN}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Telephone：</label>
+								<div class="col-sm-8">
+									<input id="telephone" name="telephone"
+										   th:value="${form.telephone}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Address(number, street, apt., suite, unit)：</label>
+								<div class="col-sm-8">
+									<input id="wAddress" name="wAddress"
+										   th:value="${form.wAddress}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">City/Town：</label>
+								<div class="col-sm-8">
+									<input id="wCity" name="wCity"
+										   th:value="${form.wCity}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Province：</label>
+								<div class="col-sm-8">
+									<input id="wProvince" name="wProvince"
+										   th:value="${form.wProvince}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Postal code：</label>
+								<div class="col-sm-8">
+									<input id="wPostal" name="wPostal"
+										   th:value="${form.wPostal}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Job tittle (at the time you were hurt)：</label>
+								<div class="col-sm-8">
+									<input id="job" name="job"
+										   th:value="${form.job}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="gg-formGroup">
+								<label class="col-sm-3 control-label">Birthday：</label>
+								<div class="col-sm-8">
+									<input id="birth" name="birth"
+										   th:value="${form.birth}==null?null:${#dates.format(form.birth,'yyyy-MM-dd')" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="gg-formGroup">
+								<label class="col-sm-3 control-label">Sex：</label>
+								<div class="col-sm-8">
+									<input id="sex" name="sex"
+										   th:value="${form.sex} class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Money lost：</label>
+								<div class="col-sm-8">
+									<input id="moneyLost" name="moneyLost"
+										   th:value="${form.moneyLost}" class="form-control" type="text">
+								</div>
+							</div>
+							<h2>Employer information</h2>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Company/Employer name：</label>
+								<div class="col-sm-8">
+									<input id="eName" name="eName"
+										   th:value="${form.eName}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Company telephone：</label>
+								<div class="col-sm-8">
+									<input id="eTelephone" name="eTelephone"
+										   th:value="${form.eTelephone}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Address(number, street, apt., suite, unit)：</label>
+								<div class="col-sm-8">
+									<input id="eAddress" name="eAddress"
+										   th:value="${form.eAddress}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">City/Town：</label>
+								<div class="col-sm-8">
+									<input id="eCity" name="eCity"
+										   th:value="${form.eCity}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Province：</label>
+								<div class="col-sm-8">
+									<input id="eProvince" name="eProvince"
+										   th:value="${form.eProvince}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Postal code：</label>
+								<div class="col-sm-8">
+									<input id="ePostal" name="ePostal"
+										   th:value="${form.ePostal}" class="form-control" type="text">
+								</div>
+							</div>
+							<h2>Patient's current situation</h2>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Vision：</label>
+								<div class="col-sm-8">
+									<input id="vision" name="vision"
+										   th:value="${form.vision}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Hearing：</label>
+								<div class="col-sm-8">
+									<input id="hearing" name="hearing"
+										   th:value="${form.hearing}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Limb co-coordination：</label>
+								<div class="col-sm-8">
+									<input id="limbCo" name="limbCo"
+										   th:value="${form.limbCo}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Strength：</label>
+								<div class="col-sm-8">
+									<input id="strength" name="strength"
+										   th:value="${form.strength}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Body position：</label>
+								<div class="col-sm-8">
+									<input id="bodyPosition" name="bodyPosition"
+										   th:value="${form.bodyPosition}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Color discrimination：</label>
+								<div class="col-sm-8">
+									<input id="colorDiscrimination" name="colorDiscrimination"
+										   th:value="${form.colorDiscrimination}" class="form-control" type="text">
+								</div>
+							</div>
+							<h5>Remark</h5>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Remark：</label>
+								<div class="col-sm-8">
+									<input id="remarks" name="remarks"
+										   th:value="${form.remarks}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">Status：</label>
+								<div class="col-sm-8">
+									<input id="status" name="status"
+										   th:value="${form.status}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group hidden">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/oa/form/read.js">
+		
+	</script>
+</body>
+</html>

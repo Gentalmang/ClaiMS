@@ -1,0 +1,55 @@
+server:
+  session-timeout: 1800
+#    tomcat:
+#        max-threads: 1000
+#        min-spare-threads: 30
+  port: 8088
+#    uri-encoding: utf-8
+#security:
+#  basic:
+#    enabled: false
+spring:
+  # sender
+  mail:
+    IsSend: true
+    msg: More inforamtion is required. #content of the message
+    company: ClaiMS #tittle
+    username: subowenjz@163.com  # sender email address
+    password: ACNDEEOGTORLLOMY        # SMTP|POP3|IMAP
+    host: smtp.163.com      # server address
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+    port: 465
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles: 
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 30Mb
+      max-request-size: 30Mb
+  devtools:
+    restart:
+      enabled: true
+  cache:
+    type: ehcache
+    ehcache:
+      config: classpath:config/ehcache.xml
+
+logging:
+  level:
+    com.bootdo.mapper: debug
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mybatis/**/*Mapper.xml
+  typeAliasesPackage: com.bootdo.**.domain

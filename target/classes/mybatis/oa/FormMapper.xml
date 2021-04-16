@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.oaForm.dao.FormDao">
+
+    <select id="get" resultType="com.bootdo.oaForm.domain.FormDO">
+        select
+            `id`,`wLastName`,`wFirstName`,`SIN`,`telephone`,`wAddress`,`wCity`,`wProvince`,`wPostal`,`job`,`birth`,`sex`,`moneyLost`,`eName`,`eTelephone`,`eAddress`,`eCity`,`eProvince`,`ePostal`,`vision`,`hearing`,`strength`,`bodyPosition`,`limbCo`,`colorDiscrimination`,`status`,`remarks`
+        from oa_form where id = #{value}
+    </select>
+
+    <select id="list" resultType="com.bootdo.oaForm.domain.FormDO">
+        select
+            `id`,`wLastName`,`wFirstName`,`SIN`,`telephone`,`wAddress`,`wCity`,`wProvince`,`wPostal`,`job`,`birth`,`sex`,`moneyLost`,`eName`,`eTelephone`,`eAddress`,`eCity`,`eProvince`,`ePostal`,`vision`,`hearing`,`strength`,`bodyPosition`,`limbCo`,`colorDiscrimination`,`status`,`remarks`
+        from oa_form
+        <where>
+            <if test="id != null and id != ''"> and id = #{id} </if>
+            <if test="wLastName != null and wLastName != ''"> and wLastName = #{wLastName} </if>
+            <if test="wFirstName != null and wFirstName != ''"> and wFirstName = #{wFirstName} </if>
+            <if test="SIN != null and SIN != ''"> and SIN = #{SIN} </if>
+            <if test="telephone != null and telephone != ''"> and telephone = #{telephone} </if>
+            <if test="wAddress != null and wAddress != ''"> and wAddress = #{wAddress} </if>
+            <if test="wCity != null and wCity != ''"> and wCity = #{wCity} </if>
+            <if test="wProvince != null and wProvince != ''"> and wProvince = #{wProvince} </if>
+            <if test="wPostal != null and wPostal != ''"> and wPostal = #{wPostal} </if>
+            <if test="job != null and job != ''"> and job = #{job} </if>
+            <if test="birth != null and birth != ''"> and birth = #{birth} </if>
+            <if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag} </if>
+            <if test="sex != null and sex != ''"> and sex = #{sex} </if>
+            <if test="moneyLost != null and moneyLost != ''"> and moneyLost = #{moneyLost} </if>
+            <if test="eName != null and eName != ''"> and eName = #{eName} </if>
+            <if test="eTelephone != null and eTelephone != ''"> and eTelephone = #{eTelephone} </if>
+            <if test="eAddress != null and eAddress != ''"> and eAddress = #{eAddress} </if>
+            <if test="eCity != null and eCity != ''"> and eCity = #{eCity} </if>
+            <if test="eProvince != null and eProvince != ''"> and eProvince = #{eProvince} </if>
+            <if test="ePostal != null and ePostal != ''"> and ePostal = #{ePostal} </if>
+            <if test="vision != null and vision != ''"> and vision = #{vision} </if>
+            <if test="hearing != null and hearing != ''"> and hearing = #{hearing} </if>
+            <if test="strength != null and strength != ''"> and strength = #{strength} </if>
+            <if test="limbCo != null and limbCo != ''"> and limbCo = #{limbCo} </if>
+            <if test="bodyPosition != null and bodyPosition != ''"> and bodyPosition = #{bodyPosition} </if>
+            <if test="colorDiscrimination != null and colorDiscrimination != ''"> and colorDiscrimination = #{colorDiscrimination} </if>
+            <if test="status != null and status != ''"> and status = #{status} </if>
+            <if test="remarks != null and remarks != ''"> and remarks = #{remarks} </if>
+
+        </where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="count" resultType="int">
+        select count(*) from oa_form
+        <where>
+            <if test="id != null and id != ''"> and id = #{id} </if>
+            <if test="wLastName != null and wLastName != ''"> and wLastName = #{wLastName} </if>
+            <if test="wFirstName != null and wFirstName != ''"> and wFirstName = #{wFirstName} </if>
+            <if test="SIN != null and SIN != ''"> and SIN = #{SIN} </if>
+            <if test="telephone != null and telephone != ''"> and telephone = #{telephone} </if>
+            <if test="wAddress != null and wAddress != ''"> and wAddress = #{wAddress} </if>
+            <if test="wCity != null and wCity != ''"> and wCity = #{wCity} </if>
+            <if test="wProvince != null and wProvince != ''"> and wProvince = #{wProvince} </if>
+            <if test="wPostal != null and wPostal != ''"> and wPostal = #{wPostal} </if>
+            <if test="job != null and job != ''"> and job = #{job} </if>
+            <if test="birth != null and birth != ''"> and birth = #{birth} </if>
+            <if test="delFlag != null and delFlag != ''"> and del_flag = #{delFlag} </if>
+            <if test="sex != null and sex != ''"> and sex = #{sex} </if>
+            <if test="moneyLost != null and moneyLost != ''"> and moneyLost = #{moneyLost} </if>
+            <if test="eName != null and eName != ''"> and eName = #{eName} </if>
+            <if test="eTelephone != null and eTelephone != ''"> and eTelephone = #{eTelephone} </if>
+            <if test="eAddress != null and eAddress != ''"> and eAddress = #{eAddress} </if>
+            <if test="eCity != null and eCity != ''"> and eCity = #{eCity} </if>
+            <if test="eProvince != null and eProvince != ''"> and eProvince = #{eProvince} </if>
+            <if test="ePostal != null and ePostal != ''"> and ePostal = #{ePostal} </if>
+            <if test="vision != null and vision != ''"> and vision = #{vision} </if>
+            <if test="limbCo != null and limbCo != ''"> and limbCo = #{limbCo} </if>
+            <if test="hearing != null and hearing != ''"> and hearing = #{hearing} </if>
+            <if test="strength != null and strength != ''"> and strength = #{strength} </if>
+            <if test="bodyPosition != null and bodyPosition != ''"> and bodyPosition = #{bodyPosition} </if>
+            <if test="colorDiscrimination != null and colorDiscrimination != ''"> and colorDiscrimination = #{colorDiscrimination} </if>
+            <if test="status != null and status != ''"> and status = #{status} </if>
+            <if test="createBy != null and createBy != ''"> and createBy = #{createBy} </if>
+            <if test="remarks != null and remarks != ''"> and remarks = #{remarks} </if>
+
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.bootdo.oaForm.domain.FormDO"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into oa_form
+        (
+            `id`,`wLastName`,`wFirstName`,`SIN`,`telephone`,`wAddress`,`wCity`,`wProvince`,`wPostal`,`job`,`birth`,`sex`,`moneyLost`,`eName`,`eTelephone`,`eAddress`,`eCity`,`eProvince`,`ePostal`,`vision`,`hearing`,`strength`,`bodyPosition`,`colorDiscrimination`,`status`,`remarks`,`limbCo`
+        )
+        values
+        (
+            #{id},#{wLastName},#{wFirstName},#{SIN},#{telephone},#{wAddress},#{wCity},#{wProvince},#{wPostal},#{job},#{birth},#{sex},#{moneyLost},#{eName},#{eTelephone},#{eAddress},#{eCity},#{eProvince},#{ePostal},#{vision},#{hearing},#{strength},#{bodyPosition},#{colorDiscrimination},#{status},#{remarks}
+
+        )
+    </insert>
+
+    <update id="update" parameterType="com.bootdo.oaForm.domain.FormDO">
+        update oa_form
+        <set>
+            <if test="id != null" > `id` = #{id} </if>
+            <if test="wLastName != null"> `wLastName` = #{wLastName} </if>
+            <if test="wFirstName != null "> `wFirstName` = #{wFirstName} </if>
+            <if test="SIN != null "> `SIN` = #{SIN} </if>
+            <if test="telephone != null "> `telephone` = #{telephone} </if>
+            <if test="wAddress != null "> `wAddress` = #{wAddress} </if>
+            <if test="wCity != null "> `wCity` = #{wCity} </if>
+            <if test="wProvince != null "> `wProvince` = #{wProvince} </if>
+            <if test="wPostal != null ">  `wPostal` = #{wPostal} </if>
+            <if test="job != null "> `job` = #{job} </if>
+            <if test="birth != null "> `birth` = #{birth} </if>
+            <if test="delFlag != null "> `del_flag` = #{delFlag} </if>
+            <if test="sex != null "> `sex` = #{sex} </if>
+            <if test="moneyLost != null "> `moneyLost` = #{moneyLost} </if>
+            <if test="eName != null "> `eName` = #{eName} </if>
+            <if test="eTelephone != null "> `eTelephone` = #{eTelephone} </if>
+            <if test="eAddress != null "> `eAddress` = #{eAddress} </if>
+            <if test="eCity != null "> `eCity` = #{eCity} </if>
+            <if test="eProvince != null "> `eProvince` = #{eProvince} </if>
+            <if test="ePostal != null "> `ePostal` = #{ePostal} </if>
+            <if test="vision != null "> `vision` = #{vision} </if>
+            <if test="hearing != null "> `hearing` = #{hearing} </if>
+            <if test="strength != null "> `strength` = #{strength} </if>
+            <if test="bodyPosition != null "> `bodyPosition` = #{bodyPosition} </if>
+            <if test="colorDiscrimination != null"> `colorDiscrimination` = #{colorDiscrimination} </if>
+            <if test="limbCo != null"> `limbCo` = #{limbCo} </if>
+            <if test="status != null "> `status` = #{status} </if>
+            <if test="remarks != null "> `remarks` = #{remarks} </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="remove">
+        delete from oa_form where id = #{value}
+    </delete>
+
+    <delete id="batchRemove">
+        delete from oa_form where id in
+        <foreach item="id" collection="array" open="(" separator=","
+                 close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="listByIds" resultType="com.bootdo.oaForm.domain.FormDO">
+        select
+        `id`,`wLastName`,`wFirstName`,`SIN`,`telephone`,`wAddress`,`wCity`,`wProvince`,`wPostal`,`job`,`birth`,`sex`,`moneyLost`,`eName`,`eTelephone`,`eAddress`,`eCity`,`eProvince`,`ePostal`,`vision`,`hearing`,`strength`,`bodyPosition`,`colorDiscrimination`,`limbCo`,`status`,`remarks`
+        from oa_form where id in
+        <foreach item="id" collection="array" open="(" separator=","
+                 close=")">
+            #{id}
+        </foreach>
+    </select>
+
+
+    <!--<select id="countDTO" resultType="int">
+        select count(*)
+        from
+            oa_form_record r right JOIN oa_form n on r.form_id
+                = n.id where
+            r.user_id =#{userId} and
+            r.is_read = #{isRead}
+    </select>
+
+    <select id="listDTO" resultType="com.bootdo.oaNotify.domain.NotifyDTO">
+        select DISTINCT
+        n.id ,`type`,`title`,`content`,`files`,r.is_read,`status`,`create_by`,`create_date`,`update_by`,`update_date`,`remarks`,`del_flag`
+        from oa_notify_record r right JOIN oa_notify n on r.notify_id = n.id
+        <where>
+            <if test="id != null and id != ''"> and r.id = #{id} </if>
+            <if test="notifyId != null and notifyId != ''"> and r.notify_id = #{notifyId} </if>
+            <if test="isRead != null and isRead != ''"> and r.is_read = #{isRead} </if>
+            <if test="userId != null and userId != ''"> and r.user_id = #{userId} </if>
+            <if test="readDate != null and readDate != ''"> and r.read_date = #{readDate} </if>
+        </where>
+        order by is_read ASC, update_date DESC
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+
+    </select>-->
+
+</mapper>
