@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83be46e7-690a-43c5-b63b-0fa31e985af2" name="Default Changelist" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/applog/2021-04-16/2021-04-16.log" beforeDir="false" afterPath="$PROJECT_DIR$/applog/2021-04-16/2021-04-16.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -441,7 +441,8 @@
       <workItem from="1617517924383" duration="44647000" />
       <workItem from="1618175994881" duration="1322000" />
       <workItem from="1618366175150" duration="9684000" />
-      <workItem from="1618946208001" duration="598000" />
+      <workItem from="1618946208001" duration="1527000" />
+      <workItem from="1619529802298" duration="1958000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1616342268367</created>

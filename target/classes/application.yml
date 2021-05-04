@@ -14,7 +14,7 @@ spring:
     IsSend: true
     msg: More inforamtion is required. #content of the message
     company: ClaiMS #tittle
-    username: subowenjz@163.com  # sender email address
+    username:   # sender email address
     password: ACNDEEOGTORLLOMY        # SMTP|POP3|IMAP
     host: smtp.163.com      # server address
     properties:

@@ -275,8 +275,6 @@ function loadStatus(){
 	$.ajax({
 		url : '/common/dict/list/oa_form_status',
 		success : function(data) {
-			//加载数据
-			//加载数据
 			var id = document.getElementById("status").getAttribute("value");
 			console.log(id)
 			var sel=new Array();
