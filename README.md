@@ -10,15 +10,15 @@
 * [Quick Start](#Quick Start)
 * [Function Demo](#Function Demo)
   * Log in
-  * Profile
   * System
     * User
     * Role
-    * Department
   * Claims management
+  * Claiming form
 * [Resources](#Resources)
   * NOC
   * Open source projects
+  * Tech stack
 * [Next Step](#Next Step)
 
 
@@ -69,9 +69,9 @@ An online web app with following features:
 2. Create a new database named claims 
     
    `CREATE DATABASE claims`
-3. Run claims.sql script file
+3. Run claims.sql script file ~~(I assume people who staring at this line would use MySQL WorkBench)~~
    
-![][/img/runScript.jpg]
+![](/img/runScript.jpg)
 4. Go to src/main/resources/application-dev.yml and application-pro.yml to configure url,username and password of database
 5. Go to src/main/resources/application.yml to configure email service (username, password, host, properties)
 6. Go to src/main/java/BootdoApplication, build and run the project
@@ -80,3 +80,58 @@ An online web app with following features:
 ***
 
 ### Function Demo
+#### Log in
+![](/img/log in.jpg)
+#### System
+System module mainly contains user, role and department management. 
+##### User
+![](/img/InkeduserManagement.jpg)
+User can be assigned multiple roles.
+![Add User](/img/InkedAddUser.jpg)
+##### Role
+Permission to pages (in a tree structure) can be granted to roles. 
+![](/img/permission.jpg)
+#### Claims management
+There are three pages for claims management.
+1. "My Claims" for users to see their own claims
+
+![](/img/userClaims.jpg)
+2. "Claims Management" for doctors to see, and evaluate all claims assigned to them.
+
+3. "Claims Management" for insurers to get, set or delete all claim.
+
+![](/img/allClaims.jpg)
+
+####Claiming form
+Claiming form asks information about the user, user's company and user's current situation.
+
+Questions about person's current situation is generated according to NOC.
+
+![Job](/img/jobInfo.jpg)
+![Patient's current situation](/img/Inkedpatient'sSituation.jpg)
+
+***
+
+### Resources
+#### NOC
+NOC stands for the National Occupational Classification, it subdivides occupations 
+according to occupational categories, and the skill requirements of occupation to form
+a collection of jobs in Canada.
+
+More information please see: [here](https://noc.esdc.gc.ca/)
+
+#### Open Source Project
+The system module of bootdo is used in ClaiMS. Link: [here](https://github.com/lcg0124/bootdo)
+Also thanks to bootdo helps me learn to develop in Springboot. 
+
+#### Tech stack
+1. Backend: SpringBoot, Shiro, Thymeleaf, MyBatis
+2. Frontend: jQuery, jsTree, bootstrapTable
+3. Database: MySQL
+
+***
+
+### Next Step
+1. Connect the system to the NOC in real time.
+2. Help people find jobs according to the information gathered.
+3. A find doctor module to help user find doctors nearby them.
