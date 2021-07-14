@@ -73,15 +73,18 @@ An online web app with following features:
    
 ![](/img/runScript.jpg)
 4. Go to src/main/resources/application-dev.yml and application-pro.yml to configure url,username and password of database
-5. Go to src/main/resources/application.yml to configure email service (username, password, host, properties)
-6. Go to src/main/java/BootdoApplication, build and run the project
-7. Open browser, go to localhost:8088/index
+
+6. Go to src/main/resources/application.yml to configure email service (username, password, host, properties)
+
+8. Go to src/main/java/BootdoApplication, build and run the project
+
+10. Open browser, go to localhost:8088/index
 
 ***
 
 ### Function-Demo
 #### Log in
-![](/img/log in.jpg)
+![](/img/logIn.jpg)
 #### System
 System module mainly contains user, role and department management. 
 ##### User
