@@ -7,8 +7,8 @@
     *  Problems
     *  Solution
   * Technical
-* [Quick Start](#Quick Start)
-* [Function Demo](#Function Demo)
+* [Quick-Start](#Quick-Start)
+* [Function-Demo](#Function-Demo)
   * Log in
   * System
     * User
@@ -19,7 +19,7 @@
   * NOC
   * Open source projects
   * Tech stack
-* [Next Step](#Next Step)
+* [Next-Step](#Next-Step)
 
 
 
@@ -56,7 +56,7 @@ An online web app with following features:
 
 ***
 
-### Quick Start
+### Quick-Start
 
 1. Download following:
    
@@ -79,9 +79,9 @@ An online web app with following features:
 
 ***
 
-### Function Demo
+### Function-Demo
 #### Log in
-![](/img/log in.jpg =250x)
+![](/img/log in.jpg)
 #### System
 System module mainly contains user, role and department management. 
 ##### User
@@ -130,7 +130,7 @@ The system module of bootdo is used in ClaiMS. Link: [here](https://github.com/l
 
 ***
 
-### Next Step
+### Next-Step
 1. Connect the system to the NOC in real time.
 2. Help people find jobs according to the information gathered.
 3. A find doctor module to help user find doctors nearby them.
