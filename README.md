@@ -71,7 +71,7 @@ An online web app with following features:
    `CREATE DATABASE claims`
 3. Run claims.sql script file ~~(I assume people who staring at this line would use MySQL WorkBench)~~
    
-![](/img/runScript.jpg)
+![](/img/runScript.jpg =250x)
 4. Go to src/main/resources/application-dev.yml and application-pro.yml to configure url,username and password of database
 5. Go to src/main/resources/application.yml to configure email service (username, password, host, properties)
 6. Go to src/main/java/BootdoApplication, build and run the project
@@ -81,34 +81,34 @@ An online web app with following features:
 
 ### Function Demo
 #### Log in
-![](/img/log in.jpg)
+![](/img/log in.jpg =250x)
 #### System
 System module mainly contains user, role and department management. 
 ##### User
-![](/img/InkeduserManagement.jpg)
+![](/img/InkeduserManagement.jpg =250x)
 User can be assigned multiple roles.
-![Add User](/img/InkedAddUser.jpg)
+![Add User](/img/InkedAddUser.jpg =250x)
 ##### Role
 Permission to pages (in a tree structure) can be granted to roles. 
-![](/img/permission.jpg)
+![](/img/permission.jpg =250x)
 #### Claims management
 There are three pages for claims management.
 1. "My Claims" for users to see their own claims
 
-![](/img/userClaims.jpg)
+![](/img/userClaims.jpg =250x)
 2. "Claims Management" for doctors to see, and evaluate all claims assigned to them.
 
 3. "Claims Management" for insurers to get, set or delete all claim.
 
-![](/img/allClaims.jpg)
+![](/img/allClaims.jpg=250x)
 
-####Claiming form
+#### Claiming form
 Claiming form asks information about the user, user's company and user's current situation.
 
 Questions about person's current situation is generated according to NOC.
 
-![Job](/img/jobInfo.jpg)
-![Patient's current situation](/img/Inkedpatient'sSituation.jpg)
+![Job](/img/jobInfo.jpg=250x)
+![Patient's current situation](/img/Inkedpatient'sSituation.jpg=250x)
 
 ***
 
