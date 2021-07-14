@@ -122,7 +122,6 @@ More information please see: [here](https://noc.esdc.gc.ca/)
 
 #### Open Source Project
 The system module of bootdo is used in ClaiMS. Link: [here](https://github.com/lcg0124/bootdo)
-Also thanks to bootdo helps me learn to develop in Springboot. 
 
 #### Tech stack
 1. Backend: SpringBoot, Shiro, Thymeleaf, MyBatis
