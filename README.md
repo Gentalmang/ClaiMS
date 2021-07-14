@@ -7,8 +7,8 @@
     *  Problems
     *  Solution
   * Technical
-* [Quick Start](#Quick Start)
-* [Function Demo](#Function Demo)
+* [Quick-Start](#Quick-Start)
+* [Function-Demo](#Function-Demo)
   * Log in
   * System
     * User
@@ -19,7 +19,7 @@
   * NOC
   * Open source projects
   * Tech stack
-* [Next Step](#Next Step)
+* [Next-Step](#Next-Step)
 
 
 
@@ -56,7 +56,7 @@ An online web app with following features:
 
 ***
 
-### Quick Start
+### Quick-Start
 
 1. Download following:
    
@@ -79,7 +79,7 @@ An online web app with following features:
 
 ***
 
-### Function Demo
+### Function-Demo
 #### Log in
 ![](/img/log in.jpg)
 #### System
@@ -102,7 +102,7 @@ There are three pages for claims management.
 
 ![](/img/allClaims.jpg)
 
-####Claiming form
+#### Claiming form
 Claiming form asks information about the user, user's company and user's current situation.
 
 Questions about person's current situation is generated according to NOC.
@@ -122,7 +122,6 @@ More information please see: [here](https://noc.esdc.gc.ca/)
 
 #### Open Source Project
 The system module of bootdo is used in ClaiMS. Link: [here](https://github.com/lcg0124/bootdo)
-Also thanks to bootdo helps me learn to develop in Springboot. 
 
 #### Tech stack
 1. Backend: SpringBoot, Shiro, Thymeleaf, MyBatis
@@ -131,7 +130,7 @@ Also thanks to bootdo helps me learn to develop in Springboot.
 
 ***
 
-### Next Step
+### Next-Step
 1. Connect the system to the NOC in real time.
 2. Help people find jobs according to the information gathered.
 3. A find doctor module to help user find doctors nearby them.
